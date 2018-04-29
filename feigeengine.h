@@ -3,6 +3,8 @@
 
 #include <QtWidgets/QMainWindow>
 #include "ui_feigeengine.h"
+#include "core/include/GLContext.h"
+#include <qtimer.h>
 
 class feigeEngine : public QMainWindow
 {
@@ -14,6 +16,12 @@ public:
 
 private:
 	Ui::feigeEngineClass ui;
+
+private:
+	GLContext _context;
+
+protected:
+	void paintEvent(QPaintEvent* evt);
 };
 
 #endif // FEIGEENGINE_H
