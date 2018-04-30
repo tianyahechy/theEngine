@@ -58,14 +58,14 @@ bool GLContext::setup(HWND hWnd, HDC hDC)
 	}
 	if (!SetPixelFormat(_hDC, PixelFormat, &pfd))
 	{
-		return  false;
+		return false;
 	}
 	_hRC = wglCreateContext(_hDC);
 	if (!wglMakeCurrent(_hDC, _hRC))
 	{
-		return  false;
+		return false;
 	}
-	return  true;
+	return true;
 }
 
 /**
