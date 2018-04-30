@@ -19,9 +19,13 @@ private:
 
 private:
 	GLContext _context;
+	QTimer _renderTimer;
 
 protected:
-	void paintEvent(QPaintEvent* evt);
+	//void paintEvent(QPaintEvent* evt);
+
+	public slots:
+	void renderScene();
 };
 
 #endif // FEIGEENGINE_H
