@@ -1,4 +1,5 @@
 #include "../include/GLContext.h"
+
 GLContext::GLContext()
 {
 	_format = 0;

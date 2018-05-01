@@ -1,5 +1,7 @@
-#pragma once
 
+//设置设备与绘制上下文
+
+#pragma once
 #include <Windows.h>
 #include <gl/gl.h>
 

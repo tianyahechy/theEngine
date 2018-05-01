@@ -25,6 +25,7 @@ struct cameraParameter
 	int zNear;
 	int zFar;
 };
+
 class feigeEngine : public QMainWindow
 {
 	Q_OBJECT
@@ -32,6 +33,12 @@ class feigeEngine : public QMainWindow
 public:
 	feigeEngine(QWidget *parent = 0);
 	~feigeEngine();
+
+public:
+	//设置摄像机矩阵
+	void setCameraMatrixParameter(int left, int right, int bottom, int top, float zNear, float zFar);
+	//设置投影矩阵
+	void setProjMatrixParameter(int x, int y, int width, int height);
 
 private:
 	Ui::feigeEngineClass ui;

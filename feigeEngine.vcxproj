@@ -76,7 +76,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="core\src\BaseGraphElement.cpp" />
     <ClCompile Include="core\src\GLContext.cpp" />
+    <ClCompile Include="core\src\Line.cpp" />
     <ClCompile Include="feigeengine.cpp" />
     <ClCompile Include="GeneratedFiles\Debug\moc_feigeengine.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
@@ -117,7 +119,9 @@
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="core\include\BaseGraphElement.h" />
     <ClInclude Include="core\include\GLContext.h" />
+    <ClInclude Include="core\include\Line.h" />
     <ClInclude Include="GeneratedFiles\ui_feigeengine.h" />
   </ItemGroup>
   <ItemGroup>
