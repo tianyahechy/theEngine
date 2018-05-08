@@ -1,22 +1,45 @@
 #include "feigeengine.h"
 #include <QtWidgets/QApplication>
 #include "core\include\Line.h"
+#include "core\include\Triangle.h"
 
 void draw()
 {
-	Pt3 startPt;
-	startPt.x = 0;
-	startPt.y = 0;
-	startPt.z = 0;
-	Pt3 endPt;
-	endPt.x = 100;
-	endPt.y = 100;
-	endPt.z = 0;
+	Pt3 pt0;
+	pt0.x = 0;
+	pt0.y = 0;
+	pt0.z = 0;
+	Pt3 pt1;
+	pt1.x = 100;
+	pt1.y = 100;
+	pt1.z = 0;
+	Pt3 pt2;
+	pt2.x = 50;
+	pt2.y = 100;
+	pt2.z = 0;
+	std::vector<Pt3> pointVec;
+	pointVec.clear();
+	pointVec.push_back(pt0);
+	pointVec.push_back(pt1);
+	pointVec.push_back(pt2);
 
-	Line *theLine  = new Line(startPt, endPt);
-	theLine->draw();
+	float r = 0.0;
+	float g = 0.5;
+	float b = 0.5;
+	float a = 0.5;
+	std::vector<float> colorVec;
+	colorVec.clear();
+	colorVec.push_back(r);
+	colorVec.push_back(g);
+	colorVec.push_back(b);
+	colorVec.push_back(a);
 
-	delete theLine;
+	Triangle *theTriangle = new Triangle(pointVec, colorVec);
+	pointVec.clear();
+	colorVec.clear();
+	theTriangle->draw();
+
+	delete theTriangle;
 }
 
 int main(int argc, char *argv[])
