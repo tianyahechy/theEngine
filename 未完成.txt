@@ -1,4 +1,4 @@
-1,把每个绘制图元加到引擎的renderlist，并且动态调度。
+1,把每个绘制图元加到引擎的renderlist，并且动态调度。可以考虑枚举类型为线,三角形等.
 0，不停重构。
 1，考虑用插件式，微内核。先实现一个小的C++插件系统，学习下x3c，https://sourceforge.net/projects/x3c/，他的博客在https://www.cnblogs.com/rhcad/category/254079.html
 2,core部分包含哪些。生成.dll哪些

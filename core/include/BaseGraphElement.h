@@ -18,6 +18,6 @@ public:
 	~BaseGraphElement();
 
 	//绘制，每个子类必须实现它
-	virtual void draw() = 0;
+	virtual void draw();// = 0;
 };
 

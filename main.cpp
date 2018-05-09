@@ -34,10 +34,17 @@ void draw()
 	colorVec.push_back(b);
 	colorVec.push_back(a);
 
-	Triangle *theTriangle = new Triangle(pointVec, colorVec);
+	BaseGraphElement *theTriangle = new Triangle(pointVec, colorVec);
 	pointVec.clear();
 	colorVec.clear();
 	theTriangle->draw();
+
+	typedef std::map<int, BaseGraphElement> mapGraphElement;
+	typedef std::pair<int, BaseGraphElement> pairGraphElement;
+
+	mapGraphElement renderList;
+	renderList.clear();
+
 
 	delete theTriangle;
 }
