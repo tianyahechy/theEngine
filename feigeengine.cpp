@@ -75,27 +75,17 @@ void feigeEngine::renderScene()
 void feigeEngine::render()
 {
 	glColor4f (0.0, 0.0, 1.0, 0.5);
-	float cx = 80;
-	float cy = 100;
-	float cz = 0;
-	Pt3 thePt[4];
-	thePt[0].x = 0;
-	thePt[0].y = 0;
-	thePt[0].z = cz;
-
-	thePt[1].x = 0;
-	thePt[1].y = 100;
-	thePt[1].z = cz;
-
-	thePt[2].x = 100;
-	thePt[2].y = 0;
-	thePt[2].z = cz;
-
-	thePt[3].x = 100;
-	thePt[3].y = 100;
-	thePt[3].z = cz;
+	Pt3 rect[] =
+	{
+		{ 10, 10, 0, 1, 0, 0, 0.5 },
+		{ 110, 10, 0, 0, 0.5, 0, 0.5 },
+		{ 10, 110, 0, 0, 0, 0.5, 0.5 },
+		{ 110, 110, 0, 1, 0, 0.5, 0.5 }
+	};
 
 	glEnableClientState(GL_VERTEX_ARRAY);
-	glVertexPointer(3, GL_FLOAT, 0, thePt);
+	glEnableClientState(GL_COLOR_ARRAY);
+	glVertexPointer(3, GL_FLOAT, sizeof(Pt3), rect);
+	glColorPointer(4, GL_FLOAT, sizeof(Pt3), &rect[0].red);
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4 );
 }
