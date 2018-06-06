@@ -14,14 +14,9 @@ Triangle::~Triangle()
 
 void Triangle::draw()
 {
-	glBegin(GL_TRIANGLES);
-
-	float r = _colorVec[0];
-	float g = _colorVec[1];
-	float b = _colorVec[2];
-	float a = _colorVec[3];
-
-	glColor4f(r, g, b, a);
+	
+	
+	/*
 	for (size_t i = 0; i < _pointVecVec.size(); i++)
 	{
 		std::vector<Pt3> theTriangle = _pointVecVec[i];
@@ -42,7 +37,8 @@ void Triangle::draw()
 		glVertex3f(p0_x, p0_y, p0_z);
 		glVertex3f(p1_x, p1_y, p1_z);
 		glVertex3f(p2_x, p2_y, p2_z);
+
 	}
+	*/
 	
-	glEnd();
 }

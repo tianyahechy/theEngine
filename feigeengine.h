@@ -26,6 +26,7 @@ struct cameraParameter
 	int zFar;
 };
 
+class BaseElement;
 class feigeEngine : public QMainWindow
 {
 	Q_OBJECT
@@ -58,6 +59,11 @@ protected:
 public:
 	//具体绘制函数指针
 	void(*p_MSG_Draw)();
+
+	void render();
+
+private:
+	
 };
 
 #endif // FEIGEENGINE_H

@@ -1,6 +1,7 @@
 #include "feigeengine.h"
 #include <Windows.h>
 #include <gl/GL.h>
+#include "core\include\common.h"
 
 feigeEngine::feigeEngine(QWidget *parent)
 	: QMainWindow(parent)
@@ -65,11 +66,33 @@ void feigeEngine::renderScene()
 	glLoadIdentity();
 	glOrtho(_camera.left, _camera.right, _camera.bottom, _camera.top, _camera.zNear, _camera.zFar);
 
-	if (p_MSG_Draw)
-	{
-		(*p_MSG_Draw)();
-	}
+	this->render();
 	
 	_context.swapBuffer();
 
+}
+
+void feigeEngine::render()
+{
+	glColor4f (0.0, 0.0, 1.0, 0.5);
+	float cx = 100;
+	float cy = 80;
+	float cz = 0;
+	float radius = 80;
+	Pt3 thePt[360*3];
+	for (size_t i = 0; i < 360; i++)
+	{
+		thePt[i * 3 + 0].x = cx;
+		thePt[i * 3 + 0].y = cy;
+		thePt[i * 3 + 0].z = cz;
+		thePt[i * 3 + 1].x = cx + cos(i*M_PI/180) * radius;
+		thePt[i * 3 + 1].y = cy + sin(i* M_PI/180) * radius;
+		thePt[i * 3 + 1].z = cz;
+		thePt[i * 3 + 2].x = cx + cos((i+1)*M_PI / 180) * radius;
+		thePt[i * 3 + 2].y = cy + sin((i+1)* M_PI / 180) * radius;
+		thePt[i * 3 + 2].z = cz;
+	}
+	glEnableClientState(GL_VERTEX_ARRAY);
+	glVertexPointer(3, GL_FLOAT, 0, thePt);
+	glDrawArrays(GL_TRIANGLES, 0, 360 * 3);
 }

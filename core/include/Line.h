@@ -1,6 +1,7 @@
 
 //Ïß¶Î
 #pragma once
+#include "common.h"
 #include "BaseGraphElement.h"
 class Line : public BaseGraphElement
 {

@@ -5,12 +5,6 @@
 #include <Windows.h>
 #include <gl\GL.h>
 
-struct Pt3
-{
-	double x;
-	double y;
-	double z;
-};
 class BaseGraphElement
 {
 public:
