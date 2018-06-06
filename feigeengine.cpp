@@ -79,13 +79,13 @@ void feigeEngine::render()
 	{
 		{ 10, 10, 0, 1, 0, 0, 0.5 },
 		{ 110, 10, 0, 0, 0.5, 0, 0.5 },
-		{ 10, 110, 0, 0, 0, 0.5, 0.5 },
-		{ 110, 110, 0, 1, 0, 0.5, 0.5 }
+		{ 110, 110, 0, 1, 0, 0.5, 0.5 },
+		{ 10, 110, 0, 0, 0, 0.5, 0.5 }
 	};
 
 	glEnableClientState(GL_VERTEX_ARRAY);
 	glEnableClientState(GL_COLOR_ARRAY);
 	glVertexPointer(3, GL_FLOAT, sizeof(Pt3), rect);
 	glColorPointer(4, GL_FLOAT, sizeof(Pt3), &rect[0].red);
-	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4 );
+	glDrawArrays(GL_LINE_LOOP, 1, 3 );
 }
