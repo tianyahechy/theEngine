@@ -1,3 +1,4 @@
+#include "../core/include/common.h"
 #include "feigeengine.h"
 #include <QtWidgets/QApplication>
 #include "core\include\Line.h"
@@ -5,24 +6,37 @@
 
 void draw()
 {
-	Pt3 pt0;
-	pt0.x = 0;
-	pt0.y = 0;
-	pt0.z = 0;
-	Pt3 pt1;
-	pt1.x = 100;
-	pt1.y = 100;
-	pt1.z = 0;
-	Pt3 pt2;
-	pt2.x = 50;
-	pt2.y = 100;
-	pt2.z = 0;
-	std::vector<Pt3> pointVec;
-	pointVec.clear();
-	pointVec.push_back(pt0);
-	pointVec.push_back(pt1);
-	pointVec.push_back(pt2);
+	std::vector<std::vector<Pt3>> pointVecVec;
+	pointVecVec.clear();
+	float cx = 100;
+	float cy = 100;
+	float cz = 0;
+	float radius = 80.0;
+	for (size_t j = 0; j < 360; j=j+2)
+	{
+		std::vector<Pt3> pointVec;
+		pointVec.clear();
+		Pt3 pt0;
+		pt0.x = cx;
+		pt0.y = cy;
+		pt0.z = cz;
+		pointVec.push_back(pt0);
+		for (size_t i = 0; i < 2; i++)
+		{
+			float x = (float)cos((i+j) *3.1415926 / 180) * radius + cx;
+			float y = (float)sin((i+j)* 1.0* 3.1415926 / 180) * radius + cy;
+			float z = cz;
+			Pt3 thePt;
+			thePt.x = x;
+			thePt.y = y;
+			thePt.z = z;
+			pointVec.push_back(thePt);
+		}
 
+		pointVecVec.push_back(pointVec);
+		pointVec.clear();
+	}
+	
 	float r = 0.0;
 	float g = 0.5;
 	float b = 0.5;
@@ -34,10 +48,16 @@ void draw()
 	colorVec.push_back(b);
 	colorVec.push_back(a);
 
-	BaseGraphElement *theTriangle = new Triangle(pointVec, colorVec);
-	pointVec.clear();
-	colorVec.clear();
-	theTriangle->draw();
+	for (size_t i = 0; i < pointVecVec.size(); i++)
+	{
+		
+		BaseGraphElement *theTriangle = new Triangle(pointVecVec[i], colorVec);
+		pointVecVec[i].clear();
+		pointVecVec[i].clear();
+		theTriangle->draw();
+
+		delete theTriangle;
+	}
 
 	typedef std::map<int, BaseGraphElement> mapGraphElement;
 	typedef std::pair<int, BaseGraphElement> pairGraphElement;
@@ -45,8 +65,6 @@ void draw()
 	mapGraphElement renderList;
 	renderList.clear();
 
-
-	delete theTriangle;
 }
 
 int main(int argc, char *argv[])
