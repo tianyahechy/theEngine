@@ -79,20 +79,18 @@ void feigeEngine::render()
 	float cy = 80;
 	float cz = 0;
 	float radius = 80;
-	Pt3 thePt[360*3];
+	Pt3 thePt[360];
+	thePt[0].x = cx;
+	thePt[0].y = cy;
+	thePt[0].z = cz;
 	for (size_t i = 0; i < 360; i++)
 	{
-		thePt[i * 3 + 0].x = cx;
-		thePt[i * 3 + 0].y = cy;
-		thePt[i * 3 + 0].z = cz;
-		thePt[i * 3 + 1].x = cx + cos(i*M_PI/180) * radius;
-		thePt[i * 3 + 1].y = cy + sin(i* M_PI/180) * radius;
-		thePt[i * 3 + 1].z = cz;
-		thePt[i * 3 + 2].x = cx + cos((i+1)*M_PI / 180) * radius;
-		thePt[i * 3 + 2].y = cy + sin((i+1)* M_PI / 180) * radius;
-		thePt[i * 3 + 2].z = cz;
+	
+		thePt[i].x = cx + cos(i*M_PI/180) * radius;
+		thePt[i].y = cy + sin(i* M_PI/180) * radius;
+		thePt[i].z = cz;
 	}
 	glEnableClientState(GL_VERTEX_ARRAY);
-	glVertexPointer(3, GL_FLOAT, 0, thePt);
-	glDrawArrays(GL_TRIANGLES, 0, 360 * 3);
+	glVertexPointer(3, GL_FLOAT, sizeof(Pt3), thePt);
+	glDrawArrays(GL_TRIANGLE_FAN, 0, 360 );
 }
